@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import PlayScene from './scenes/PlayScene.js';
+import PlayScene from './scenes/PlayScene';
 
 const config = {
     width: 800,
