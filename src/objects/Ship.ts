@@ -14,15 +14,18 @@ class Ship {
 
     }
 
-    handleKeyboard(keyboard) {
+    handleKeyboard(keyboard: Phaser.Input.Keyboard.KeyboardPlugin) {
         let cursors = keyboard.createCursorKeys();
 
+        // @ts-ignore
         if (cursors.up.isDown) {
-            this.img.setAcceleration(this.img.body.acceleration + 100);
+            this.scene.physics.velocityFromRotation(this.img.rotation, 150,
+                this.img.body.acceleration);
         } else {
             this.img.setAcceleration(0);
         }
 
+        // @ts-ignore
         if (cursors.left.isDown) {
             this.img.setAngularAcceleration(-100);
         } else if (cursors.right.isDown) {
