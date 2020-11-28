@@ -1,8 +1,25 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Phaser from 'phaser';
+import PlayScene from './scenes/PlayScene.js';
 
-Vue.config.productionTip = false
+const config = {
+    width: 800,
+    height: 600,
+    background: 'purple',
+    type: Phaser.AUTO,
+    audio: {
+        disableWebAudio: true,
+    },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            fps: 60,
+            gravity: {y: 0},
+        },
+    },
+};
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+const game = new Phaser.Game(config);
+
+game.scene.add('PlayScene', PlayScene);
+
+game.scene.start('PlayScene');
