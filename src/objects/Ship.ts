@@ -11,24 +11,22 @@ class Ship {
         image.setDrag(0.99);
         image.setMaxVelocity(150);
         image.setCollideWorldBounds(true);
-
     }
 
     handleKeyboard(keyboard: Phaser.Input.Keyboard.KeyboardPlugin) {
         let cursors = keyboard.createCursorKeys();
 
-        // @ts-ignore
-        if (cursors.up.isDown) {
-            this.scene.physics.velocityFromRotation(this.img.rotation, 150,
-                this.img.body.acceleration);
+        if (cursors.up?.isDown) {
+            let body = this.img.body;
+            if (body instanceof Phaser.Physics.Arcade.Body)
+                this.scene.physics.velocityFromRotation(this.img.rotation, 150, body.acceleration);
         } else {
             this.img.setAcceleration(0);
         }
 
-        // @ts-ignore
-        if (cursors.left.isDown) {
+        if (cursors.left?.isDown) {
             this.img.setAngularAcceleration(-100);
-        } else if (cursors.right.isDown) {
+        } else if (cursors.right?.isDown) {
             this.img.setAngularAcceleration(100);
         } else {
             this.img.setAngularAcceleration(0);
