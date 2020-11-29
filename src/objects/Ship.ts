@@ -52,7 +52,7 @@ class Ship extends ObjectAffectedByGravity {
         let speed = Math.round(this.body.velocity.length());
         this.text.text = `Speed: ${speed}`;
         if (cursors.up?.isDown) {
-            this.body.acceleration.setToPolar(this.img.rotation, 100);
+            this.body.acceleration.setToPolar(this.img.rotation, 800);
             new FireParticleEmitter(this.fire, this.img, this.scene.game);
             this.stopLinearVel = false;
         } else {

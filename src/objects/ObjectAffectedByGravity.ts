@@ -1,9 +1,10 @@
 import Phaser from "phaser";
 
 class ObjectAffectedByGravity {
-    protected readonly img: Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
+    public readonly img: Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
     protected scene: Phaser.Scene;
-    protected body: Phaser.Physics.Arcade.Body;
+    public body: Phaser.Physics.Arcade.Body;
+    public isPlayer: boolean = false;
 
     constructor(scene: Phaser.Scene, image: Phaser.Types.Physics.Arcade.ImageWithDynamicBody) {
         this.img = image;
