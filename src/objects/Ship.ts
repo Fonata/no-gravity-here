@@ -66,7 +66,10 @@ class Ship extends ObjectAffectedByGravity {
         this.text.setColor('#' + playerColor.toString(16));
     }
 
-    handleKeyboard(keyboard: Phaser.Input.Keyboard.KeyboardPlugin) {
+    public handleKeyboard(keyboard: Phaser.Input.Keyboard.KeyboardPlugin) {
+        if (!this.img.visible) {
+            return;
+        }
         let cursors = keyboard.createCursorKeys();
 
         this.handleSpeed(cursors);
@@ -166,8 +169,10 @@ class Ship extends ObjectAffectedByGravity {
         return angleDifference;
     }
 
-    private accelerateRotation(ship: Ship | null = null) {
-        if (ship === null) ship = this;
+    private static  accelerateRotation(ship: Ship ) {
+        if (!ship.img.visible) {
+            return;
+        }
         if (Math.abs(ship.getAngleDifference()) < 0.4) {
             // No acceleration needed
             return;
