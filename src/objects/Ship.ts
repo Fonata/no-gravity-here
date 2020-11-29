@@ -1,10 +1,8 @@
 import Phaser from "phaser";
 import FireParticleEmitter from "@/animations/FireParticleEmitter";
+import ObjectAffectedByGravity from "@/objects/ObjectAffectedByGravity";
 
-class Ship {
-    private readonly img: Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
-    private scene: Phaser.Scene;
-    private body: Phaser.Physics.Arcade.Body;
+class Ship extends ObjectAffectedByGravity {
     private playerColor: number = 0xFFFFFF;
     private readonly fire: Phaser.GameObjects.Particles.ParticleEmitterManager;
 
@@ -13,11 +11,7 @@ class Ship {
     private text: Phaser.GameObjects.Text;
 
     constructor(scene: Phaser.Scene, image: Phaser.Types.Physics.Arcade.ImageWithDynamicBody) {
-        this.img = image;
-        this.scene = scene;
-        if (!(image.body instanceof Phaser.Physics.Arcade.Body))
-            throw new Error();
-        this.body = image.body;
+        super(scene, image);
 
         image.setAngularDrag(30);
         image.setDrag(0.999);
