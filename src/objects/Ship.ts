@@ -24,14 +24,13 @@ class Ship {
         image.setMaxVelocity(300);
         image.setCollideWorldBounds(true);
         image.depth = 999; // render in front of the fire
+        this.text = scene.add.text(5, 5, '');
 
         this.setRandomColor();
         this.fire = scene.add.particles('flame1');
         scene.input.on('pointerdown', (pointer: PointerEvent) => {
             scene.add.image(pointer.x, pointer.y - 60, this.fire.texture);
         }, this);
-
-        this.text = scene.add.text(5, 5, '');
     }
 
     private setRandomColor() {
@@ -45,6 +44,7 @@ class Ship {
     public setPlayerColor(playerColor: number) {
         this.playerColor = playerColor;
         this.img.setTint(playerColor);
+        this.text.setColor('#' + playerColor.toString(16));
     }
 
     handleKeyboard(keyboard: Phaser.Input.Keyboard.KeyboardPlugin) {
