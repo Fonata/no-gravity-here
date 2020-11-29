@@ -14,10 +14,12 @@ export default class PlayScene extends Phaser.Scene {
 
     preload() {
         this.load.image('ship', '/img/rocket-bw.png');
+        this.load.image('flame1', '/img/flame1.png');
+        this.load.image('flame2', '/img/flame2.png');
     }
 
     // @ts-ignore
     update(time, delta) {
-        this.ship.handleKeyboard(this.input.keyboard);
+        this.ship?.handleKeyboard(this.input.keyboard);
     }
 }
