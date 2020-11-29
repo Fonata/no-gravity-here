@@ -13,9 +13,6 @@ class Ship extends ObjectAffectedByGravity {
     constructor(scene: Phaser.Scene, image: Phaser.Types.Physics.Arcade.ImageWithDynamicBody) {
         super(scene, image);
 
-        image.setAngularDrag(30);
-        image.setDrag(0.999);
-        image.setMaxVelocity(300);
         image.setCollideWorldBounds(true);
         image.depth = 999; // render in front of the fire
         this.text = scene.add.text(5, 5, '');
